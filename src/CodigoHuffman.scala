@@ -1,5 +1,5 @@
 
-trait CodigoHuffman
+//*trait CodigoHuffman
 
 
 
@@ -24,8 +24,7 @@ def DistribFrecAListaHojas(frec: List[(Char,Int)]) : List[HojaHuffman] =
       aux(tail,ordenar(HojaHuffman(c,f) ,listHojas))
   aux(frec,Nil)
 
-def creaRamaHuff(izq: ArbolHuffman, dch: ArbolHuffman): RamaHuffman=
-   RamaHuffman(izq,dch,izq.peso+dch.peso)
+
 
 
 
