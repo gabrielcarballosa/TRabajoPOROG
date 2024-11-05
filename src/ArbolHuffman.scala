@@ -9,7 +9,7 @@ trait ArbolHuffman {
       case HojaHuffman(caracter, peso) => caract + caracter
       case _ => throw new Error
 
-    cadenaAListaChars(caracteresAux(this, ""))
+    caracteresAux(this, "").toList
 
   type Bit = 0 | 1
 
@@ -68,7 +68,7 @@ def crearArbolHuffman(cadena: String): ArbolHuffman =
       case Nil => lisTuplas
       case h :: t =>
         if lisTuplas.exists(_._1 == h) then aux(t, lisTuplas)
-        else aux(t, lisTuplas :+ cuantasVeces(listChar, h))
+        else aux(t, cuantasVeces(listChar, h) :: lisTuplas )
   
     aux(listaChar, lisTuplas = Nil)}
   
@@ -136,12 +136,8 @@ object miPrograma extends ArbolHuffman, App {
   println(mensajeCod)
 
   val prueba = "hola bbe"
-  val frec = ListaCharsADistFrec(prueba.toList)
-
-  println(frec)
-  val ordenFrec = DistribFrecAListaHojas(ListaCharsADistFrec(prueba.toList))
-  println(ordenFrec)
-  val combinado = combinar(ordenFrec)
-  println(combinado)
+  val arbolPrueba = crearArbolHuffman(prueba)
+  println(arbolPrueba.codificar("hhob ee"))
+  println(arbolPrueba.decodificar(List(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1)))
 }
 
